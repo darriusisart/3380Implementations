@@ -1,0 +1,4 @@
+I improved the sift0 function by adding a factor variable to correctly mark the prime candidates, because when i ran the original code,
+ it didn't include 53 as a prime number even though it is. now when I run it it prints 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53. 
+  The factor variable gives it clarity and efficency by making marking the primes explicit and easier to read, and by incrementing factor 
+   by 2 instead of i + i + 3, making it easier to read yet again, and slightly more effiecent. 

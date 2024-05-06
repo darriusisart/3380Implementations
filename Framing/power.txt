@@ -1,0 +1,2 @@
+This function takes a character (ch) and an integer (N) then returns a string consisting of N equal characters,
+ where each character is the result of raising the ch to the power of N

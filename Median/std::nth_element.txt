@@ -1,0 +1,3 @@
+I removed the sorting of the entire vector since std::nth_element partially sorts the vector, which puts the nth element in the correct position, but doesn't
+ fully sort the vector. I also use std::nth_element to find the median element. As it directly finds the median elements For odd vectors, and finds the middle element
+  and the one before it for even vectors, hence, allowing us to calculate the median.

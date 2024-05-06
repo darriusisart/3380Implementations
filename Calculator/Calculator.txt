@@ -1,0 +1,4 @@
+In the calculator I added negative numbers by regonizing the - before a number, remainder, variable assignment by inputing "let var = expression;" in the calculator,
+ as well as storage for those variables. There's also symblolic values that are jsut predefined but well known, in this case "pi", and "e" and an enhanced error handling
+ system that gives more information based on what error you produced. Then there is the Calculator on :) and Calculator off :( which just add more to the interface by letting
+  you know for sure whether you're calculator is on or off. I have also added a menu by pressing m which tells you all the features and what they do 
