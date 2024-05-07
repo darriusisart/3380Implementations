@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
+#include <cmath>
 
 // Token "kind" values
 char const number = '8';    // a floating-point number
@@ -138,13 +139,12 @@ token token_stream::get()
             std::cin.putback(ch);
             if (s == "let") return token('a');
             if (symbolic_values.find(s) != symbolic_values.end()) return token(symbolic_values[s], s);
+            if (variables.find(s) != variables.end()) return token(variables[s], s);
             return token(number, s);
         }
         throw std::runtime_error("Bad token");
     }
 }
-
-
 
 void token_stream::putback(token t)
 {
@@ -204,12 +204,11 @@ double primary()
         return primary();
     case 'a': // 'let'
     {
-         token t2 = ts.get();
-        if (t2.kind() != '=')
-        throw std::runtime_error("= missing in variable assignment");
-        double d = expression();
-        set_value(t.name(), d); // Assign value to variable
-        return d;
+        t = ts.get();
+        if (t.kind() != number)
+            throw std::runtime_error("= missing in variable assignment");
+        set_value(t.name(), t.value()); // Assign value to variable
+        return t.value();
     }
     default:
     {
@@ -227,7 +226,6 @@ double primary()
     }
     }
 }
-
 
 double term()
 {
@@ -323,8 +321,8 @@ void calculate()
             }
             else
             {
-            ts.putback(t);
-            std::cout << "= " << expression() << std::endl;
+                ts.putback(t);
+                std::cout << "= " << expression() << std::endl;
             }
         }
         catch (std::runtime_error const& e)
